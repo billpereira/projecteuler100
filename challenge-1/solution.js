@@ -1,0 +1,43 @@
+// Find the latest number before limit
+const latest = (limit, r) =>
+  limit - (limit % r) < limit ? limit - (limit % r) : limit - (limit % r) - r;
+
+// Find number of elements
+// (An - A1)/R + 1
+const n = (fistNumber, lastNumber, r) => (lastNumber - fistNumber) / r + 1;
+
+// find mmc
+const mmc = (num1, num2) => {
+  let rest, a, b;
+  a = num1;
+  b = num2;
+  do {
+    rest = a % b;
+    a = b;
+    b = rest;
+  } while (rest != 0);
+  return (num1 * num2) / a;
+};
+
+// Find Sum
+// Sn = (A1 + An)*n / 2
+const sum = (firstNum, lastNum, amount) => ((firstNum + lastNum) * amount) / 2;
+
+// Result = Sum of first plus second less the commons
+const result = (a, b, c) =>
+  c > mmc(a, b)
+    ? sum(a, latest(c, a), n(a, latest(c, a), a)) +
+      sum(b, latest(c, b), n(b, latest(c, b), b)) -
+      sum(
+        mmc(a, b),
+        latest(c, mmc(a, b)),
+        n(mmc(a, b), latest(c, mmc(a, b)), mmc(a, b))
+      )
+    : sum(a, latest(c, a), n(a, latest(c, a), a)) +
+      sum(b, latest(c, b), n(b, latest(c, b), b));
+
+const a = 4;
+const b = 6;
+const c = 20;
+
+console.log(`Multiple ${a} and ${b} till ${c} = `, result(a, b, c));
