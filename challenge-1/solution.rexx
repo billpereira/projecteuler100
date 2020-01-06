@@ -3,13 +3,7 @@ a = 3
 b = 5
 c = 100
 
-say 'last number ' || latest(a,c) 
-say 'number of elements ' || n(a,latest(a,c),a)
-say 'mmc ' || mmc(a,b)
-say 'Soma dos multiplos de 3 ' || sum(a,latest(a,c),n(a,latest(a,c),a))
-
 say result(a,b,c)
-
 
 the_end:
 exit 0
