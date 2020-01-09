@@ -24,6 +24,7 @@ const mmc = (num1, num2) => {
 const sum = (firstNum, lastNum, amount) => ((firstNum + lastNum) * amount) / 2;
 
 // Result = Sum of first plus second less the commons
+
 const result = (a, b, c) =>
   c > mmc(a, b)
     ? sum(a, latest(c, a), n(a, latest(c, a), a)) +
@@ -36,8 +37,20 @@ const result = (a, b, c) =>
     : sum(a, latest(c, a), n(a, latest(c, a), a)) +
       sum(b, latest(c, b), n(b, latest(c, b), b));
 
-const a = 4;
-const b = 6;
-const c = 20;
-
-console.log(`Multiple ${a} and ${b} till ${c} = `, result(a, b, c));
+const a = 3;
+const b = 5;
+const c = 100;
+console.time("arithmetic progression")
+console.log(`Sum of the Multiple ${a} and ${b} till ${c} = `, result(a, b, c));
+console.timeEnd("arithmetic progression")
+const test = (a,b,c) => {
+  let sum = 0
+  for(let i=1;i<c;i++){
+    
+    if(i%a===0 ||i%b===0 ) sum = sum+i
+  }
+  return sum
+}
+console.time("Iteration")
+console.log(`Sum of the Multiple ${a} and ${b} till ${c} = `, test(a, b, c));
+console.timeEnd("Iteration")
